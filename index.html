@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丹青試煉：工筆畫的時空之旅</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 改用 HTML5 內建音樂播放器，載入你的 遊戲音樂.mp3 -->
+<audio id="bg-music" loop>
+    <source src="遊戲音樂1.mp3" type="audio/mpeg">
+</audio>
+
+<div id="game-container">
+    <div id="score-board">當前總分：<span id="current-score">0</span></div>
+
+    <!-- 首頁封面 -->
+    <div id="screen-home" class="screen active">
+        <h1>丹青試煉：工筆畫的時空之旅</h1>
+        <img src="封面圖片.png" alt="丹青試煉封面圖" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <div class="story-text">
+            <strong>遊戲概述</strong>
+            時長：5~10分鐘<br>
+            玩法：劇情對話選擇、物品拖曳配對、節奏與順序點擊<br>
+            準備好穿越時空，體驗工筆畫的雋永魅力了嗎？
+        </div>
+        <div style="text-align: center;">
+            <button onclick="startGame()">進入遊戲</button>
+        </div>
+    </div>
+
+    <!-- 第一階段 -->
+    <div id="screen-stage1" class="screen">
+        <h2>第一階段：穿越畫境</h2>
+        <div id="stage1-content">
+            <img id="s1-image" src="" alt="情境圖" style="display: none;">
+            
+            <div id="s1-story" class="story-text"></div>
+            <div id="s1-question" class="question-text"></div>
+            <div id="s1-options"></div>
+        </div>
+        <div style="text-align: center;">
+            <button id="btn-next-stage2" class="hidden-btn" onclick="goToStage(2)">前往下一關：匠人的案頭</button>
+        </div>
+    </div>
+
+    <!-- 第二階段 -->
+    <div id="screen-stage2" class="screen">
+        <h2>第二階段：匠人的案頭</h2>
+        <div id="s2-info" class="story-text">畫師的需求不斷傳來，請將正確的工具拖曳至案頭上。</div>
+        
+        <div id="s2-hint" style="font-weight: bold; margin-bottom: 20px; color: var(--primary-color); white-space: pre-wrap;"></div>
+
+        <div id="drag-container" style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; min-height: 50px;">
+        </div>
+
+        <div id="drop-zone" class="drop-zone">
+            請將正確工具拖曳至此處
+        </div>
+
+        <div id="s2-result-msg" style="text-align: center; margin-top: 15px; font-weight: bold; height: 25px;"></div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="btn-next-stage3" class="hidden-btn" onclick="goToStage(3)">前往下一關：點石成金</button>
+            <button id="btn-s2-retry" class="hidden-btn" onclick="retryStage2()">重新測驗</button>
+        </div>
+    </div>
+
+    <!-- 第三階段 -->
+    <div id="screen-stage3" class="screen">
+        <h2>第三階段：點石成金</h2>
+        <div id="s3-story" class="story-text" style="min-height: 80px;">按照正確的順序與技法，賦予畫作生命吧！</div>
+
+        <div id="s3-canvas" class="s3-canvas">
+            <img id="s3-image" src="" alt="畫布" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: none; z-index: 1;">
+            
+            <span id="s3-canvas-text" style="position: relative; z-index: 2; font-weight: bold;">[畫布：空白熟宣紙]</span>
+            <div id="s3-canvas-layer" style="position: absolute; top:0; left:0; width:100%; height:100%; background: transparent; transition: all 0.5s ease; z-index: 3;"></div>
+        </div>
+
+        <div id="s3-controls" style="text-align: center; margin-top: 20px; display: flex; flex-direction: column; gap: 10px; align-items: center;">
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button id="btn-finish" class="hidden-btn" onclick="finishGame()">完成試煉，查看評價</button>
+        </div>
+    </div>
+
+    <!-- 結算畫面 -->
+    <div id="screen-result" class="screen">
+        <h1>試煉完成</h1>
+        <div class="placeholder">[結算插圖佔位符]</div>
+        <h2 id="final-title" style="color: var(--primary-color);"></h2>
+        <h3 id="final-score-display"></h3>
+        <div id="final-feedback" class="story-text" style="text-align: center;"></div>
+        <div class="story-text" style="text-align: center; font-style: italic; margin-top: 30px;">
+            「從一根線條到繁花似錦，願這份大愛的微光，能在你手中薪火相傳。」
+        </div>
+        <div style="text-align: center;">
+            <button onclick="resetGame()">重新體驗</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

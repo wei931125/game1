@@ -1,0 +1,316 @@
+/* 【視覺與色彩設計規範】 */
+:root {
+    --bg-color: #F4EBD9;
+    --text-color: #1f1706;
+    --border-color: #D5C7B5;
+    --primary-color: #C34A41;
+    --primary-hover: #A73322;
+    --secondary-color: #5B7A6B;
+    --error-color: #7A7671;
+    --btn-dark-green: #354E41;
+    --btn-dark-green-hover: #26382F;
+}
+
+/* 全域基礎設定 */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "DFKai-SB", "BiauKai", "Kaiti", "TW-Kai", "STKaiti", serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* 遊戲主區塊 */
+#game-container {
+    width: 80%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px 30px 30px 30px;
+    margin-top: 8vh;
+    margin-bottom: 8vh;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* 標題設定 */
+h1, h2, h3 { 
+    text-align: center; 
+    font-weight: bold;
+}
+h2 {
+    font-size: 2.2rem;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    letter-spacing: 4px;
+}
+
+/* 首頁專屬標題與內文排版 */
+#screen-home h1 {
+    font-size: 3rem;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    letter-spacing: 6px;
+    color: var(--text-color);
+}
+#screen-home .story-text {
+    text-align: center;
+    font-size: 1.15rem;
+    line-height: 2.2; 
+    margin-top: 25px;
+    color: #4A463F;
+    font-weight: 600;
+}
+#screen-home .story-text strong {
+    display: block;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border-color);
+    letter-spacing: 2px;
+}
+
+/* 計分板 UI */
+#score-board {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: none;
+}
+
+/* 畫面切換與過場動畫 */
+.screen {
+    display: none;
+    transition: all 0.3s ease;
+}
+.screen.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 內文與題目樣式 */
+.story-text { 
+    line-height: 2.2; 
+    font-size: 1.15rem; 
+    margin-bottom: 25px; 
+    text-align: justify;
+}
+.question-text {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--border-color);
+    line-height: 1.8;
+    font-weight: bold;
+}
+
+/* 第一階段情境圖片樣式 */
+#s1-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 25px;
+    border: 2px solid var(--border-color);
+}
+
+/* 佔位符樣式 */
+.placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    font-style: italic;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* 主按鈕 (硃砂紅) */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    font-family: inherit;
+    border: none;
+    padding: 12px 40px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(195, 74, 65, 0.25); 
+    letter-spacing: 2px;
+    margin-top: 25px;
+}
+button:hover { 
+    background-color: var(--primary-hover); 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(195, 74, 65, 0.4);
+}
+.hidden-btn { display: none; }
+
+/* 第一關答題選項按鈕 (典雅墨綠色) */
+.option-btn {
+    background-color: var(--btn-dark-green);
+    color: #F4EBD9;
+    border: 1px solid var(--btn-dark-green-hover);
+    padding: 16px 25px;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    margin: 15px 0;
+    width: 100%;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(53, 78, 65, 0.2);
+    line-height: 1.6;
+    letter-spacing: normal;
+}
+.option-btn:hover { 
+    background-color: var(--btn-dark-green-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(53, 78, 65, 0.4);
+}
+
+/* 第三關按鈕 */
+.s3-btn {
+    width: 80%;
+    max-width: 300px;
+    margin: 5px 0;
+    background-color: var(--secondary-color);
+    border-radius: 6px;
+    padding: 12px 20px;
+}
+.s3-btn:hover {
+    background-color: #4A6559;
+}
+
+/* --- 第二關：拖曳互動樣式 --- */
+.draggable-item {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
+}
+.draggable-item:hover { background-color: #4A6559; }
+.draggable-item:active {
+    cursor: grabbing;
+    transform: scale(0.95);
+}
+.drop-zone {
+    width: 100%;
+    height: 120px;
+    border: 3px dashed var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+.drop-zone.dragover {
+    background-color: rgba(91, 122, 107, 0.15);
+    border-color: var(--secondary-color);
+    transform: scale(1.02);
+}
+
+/* --- 第三關：畫布與互動樣式 (已加高以適應圖片) --- */
+.s3-canvas {
+    border: 2px solid var(--border-color);
+    background-color: #fffaf0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+    /* 將高度拉大，讓圖片能完整漂亮地顯示 */
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+/* --- 背景音樂控制區塊 (懸停展開設計) --- */
+#music-control-container {
+    position: absolute;
+    top: 20px;
+    left: 20px; 
+    display: flex;
+    align-items: center;
+    gap: 0; /* 預設將間距歸零 */
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 5px; /* 預設只包住圓形按鈕 */
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    z-index: 100; 
+    overflow: hidden; /* 關鍵：將超出的音量拉桿隱藏起來 */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 讓展開的動畫變得滑順柔和 */
+}
+
+/* 當滑鼠移至控制列上方時的狀態 */
+#music-control-container:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 5px 15px 5px 5px; /* 右側長出空間來容納拉桿 */
+    gap: 10px; /* 恢復按鈕與拉桿之間的間距 */
+}
+
+#music-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-color);
+    box-shadow: none; 
+    margin-top: 0; 
+    flex-shrink: 0; /* 防止按鈕在縮放過程中被擠壓變形 */
+    transition: background-color 0.3s;
+}
+
+#music-toggle:hover {
+    background-color: rgba(195, 74, 65, 0.1);
+}
+
+/* 音量拉桿的樣式 */
+#volume-slider {
+    width: 0; /* 預設寬度為 0 (隱藏狀態) */
+    opacity: 0; /* 預設透明度為 0 */
+    cursor: pointer;
+    accent-color: var(--primary-color); 
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 跟隨外框一起滑順展開 */
+    margin: 0;
+}
+
+/* 當滑鼠移至控制列上方時，拉桿的變化 */
+#music-control-container:hover #volume-slider {
+    width: 80px; /* 展開至正常寬度 */
+    opacity: 1; /* 變得完全不透明 */
+}
