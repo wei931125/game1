@@ -675,11 +675,17 @@ function handleAlumChoice(choice) {
 function showS3Finish() {
     document.getElementById('s3-story').innerHTML = "<strong style='color:var(--primary-color); font-size:1.2rem;'>【通關結算】</strong><br>隨著最後一筆烘染完成，整幅《富貴牡丹花鳥圖》躍然紙上。<br>系統顯示：「恭喜你完整掌握了工筆畫的核心技法，從一根線條到繁花似錦，你已具備成為宮廷畫師的資格！」";
     
-    document.getElementById('s3-image').style.display = 'none';
-    document.getElementById('s3-canvas-text').style.display = 'block';
-    document.getElementById('s3-canvas-text').innerText = "[畫作大功告成：《富貴牡丹花鳥圖》]";
+    // 1. 強制顯示第十關的完成圖
+    const imgElement = document.getElementById('s3-image');
+    imgElement.src = "第三情境-第十關.png";
+    imgElement.style.display = 'block';
     
-    document.getElementById('s3-canvas-layer').style.backgroundColor = 'rgba(91, 122, 107, 0.4)'; 
+    // 2. 隱藏畫布上的預設文字
+    document.getElementById('s3-canvas-text').style.display = 'none';
+    
+    // 3. 調整遮罩層（稍微調淡透明度為 0.15，不要擋住美美的完成圖）
+    document.getElementById('s3-canvas-layer').style.backgroundColor = 'rgba(91, 122, 107, 0.15)'; 
+    
     document.getElementById('s3-controls').innerHTML = '';
     document.getElementById('btn-finish').style.display = 'inline-block';
 }
